@@ -7,6 +7,8 @@ use DB;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Crypt;
+
 
 class ProductController extends Controller
 {

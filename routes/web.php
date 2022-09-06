@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controller;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AuthController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,7 +25,7 @@ Route::get('/', [UserController::class, 'index']);
 
 Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('cache:clear');
-    // return what you want
+    return 'Cleared !';
 });
 
 // user things gpoing on
@@ -36,8 +37,15 @@ Route::get('delete/{id}', [ProductController::class, 'destroy']);
 Route::get('view/{id}', [ProductController::class, 'show']);
 Route::post('update/{id}', [ProductController::class, 'update']);
 Route::get('edit/{id}', [ProductController::class, 'edit']);
+// Auth controller function start here
 
-Route::get('chart', [ProductController::class, 'chart']);
+
+Route::get('register', [AuthController::class, 'register']);
+Route::get('dashboard', [AuthController::class, 'dashboard']);
+Route::get('login', [AuthController::class, 'index'])->name('login');
+Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom');
+Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('register.custom');
+Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
 
 
 // Route::controller(ProductController::class)->group(function(){
