@@ -52,7 +52,7 @@ class ProductController extends Controller
         'Mobile'=>$Mobile);
         DB::table('students')->insert($data);
 
-        return redirect('/datalist')->with('status', 'Profile Added!');
+        return redirect('/datalist')->with('status', 'Student Registered !!');
 
     }
     /**
@@ -76,12 +76,8 @@ class ProductController extends Controller
     {
         //
         $viewdata= DB::select('select * from students where id = ?', [$id]);
-        // return view('datalist',['users'=>$viewdata]);
         return view('view')->with('viewdata',$viewdata);
 
-        // $users = DB::select('select * from students');
-        // print_r($users);
-    // return view('datalist',['viewdata'=>$viewdata]);
 
     }
 
@@ -116,9 +112,12 @@ class ProductController extends Controller
     {
         //
         $name = $request->input('name');
+        $email = $request->input('email');
+        $class = $request->input('class');
       DB::update('update students set name = ? where id = ?',[$name,$id]);
-      echo '<div class="container align-center">Record updated successfully.</div><br/>';
-      echo '<a href = "/datalist">Click Here</a> to go back.';
+
+      return redirect('/datalist')->with('status', 'Student Profile Updated!');
+
     }
 
     /**
@@ -131,8 +130,8 @@ class ProductController extends Controller
     {
         //
         DB::delete('delete from students where id = ?',[$id]);
-        echo "Record deleted successfully.<br/>";
-        echo '<a href = "/datalist">Click Here</a> to go back.';
+        return redirect('/datalist')->with('status', 'Student Profile has been delated !');
+
 
     }
 }

@@ -5,6 +5,8 @@
 
 
 <div class="container">
+    <a class="btn btn-primary" href="{{url('/create')}}" role="button">Add</a>
+
     <div class="card">
     @if (session('status'))
     <div class="alert alert-success">
@@ -12,10 +14,9 @@
     </div>
     </div>
 @endif
-</div>
 
 
-<a class="btn btn-primary" href="{{url('/create')}}" role="button">Add</a>
+
 <table class="table table-bordered text-center table-dark">
     <thead>
       <tr>
@@ -49,7 +50,7 @@
   </table>
 
   @endsection
-
+</div>
 
 
 
