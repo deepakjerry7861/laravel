@@ -34,7 +34,7 @@ Route::post('savedata', [ProductController::class, 'savedata']);
 Route::get('datalist', [ProductController::class, 'datalist']);
 Route::get('delete/{id}', [ProductController::class, 'destroy']);
 Route::get('view/{id}', [ProductController::class, 'show']);
-Route::get('update/{id}', [ProductController::class, 'update']);
+Route::post('update/{id}', [ProductController::class, 'update']);
 Route::get('edit/{id}', [ProductController::class, 'edit']);
 
 

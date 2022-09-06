@@ -116,9 +116,9 @@ class ProductController extends Controller
     {
         //
         $name = $request->input('name');
-      DB::update('update student set name = ? where id = ?',[$name,$id]);
-      echo "Record updated successfully.<br/>";
-      echo '<a href = "/edit-records">Click Here</a> to go back.';
+      DB::update('update students set name = ? where id = ?',[$name,$id]);
+      echo '<div class="container align-center">Record updated successfully.</div><br/>';
+      echo '<a href = "/datalist">Click Here</a> to go back.';
     }
 
     /**
