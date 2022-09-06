@@ -23,6 +23,8 @@ class ProductController extends Controller
 
         $users = DB::select('select * from students');
         // print_r($users);
+
+
     return view('datalist',['users'=>$users]);
 
 
@@ -101,20 +103,14 @@ class ProductController extends Controller
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
         $name = $request->input('name');
         $email = $request->input('email');
         $class = $request->input('class');
-      DB::update('update students set name = ? where id = ?',[$name,$id]);
+        $Mobile = $request->input('Mobile');
+      DB::update('update students set class = ?,name=?,Mobile= ? where id = ?',[$class,$name,$Mobile,$id]);
 
       return redirect('/datalist')->with('status', 'Student Profile Updated!');
 
@@ -134,4 +130,16 @@ class ProductController extends Controller
 
 
     }
+    // public function chart()
+    // {
+    //     $users = Student::select(DB::raw("COUNT(*) as count"), DB::raw("MONTHNAME(created_at) as month_name"))
+    //                 ->whereYear('created_at', date('Y'))
+    //                 ->groupBy(DB::raw("Month(created_at)"))
+    //                 ->pluck('count', 'month_name');
+
+    //     $labels = $users->keys();
+    //     $data = $users->values();
+
+    //     return view('chart', compact('labels', 'data'));
+    // }
 }

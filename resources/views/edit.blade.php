@@ -8,33 +8,31 @@
 <h1 class="text-center">Student Details Update</h1>
 
 <div class="container">
-
-
-    <form action = "/update/{{$viewdata[0]->id; }}" method = "post">
+    <div class="card p-5">
+    <form action ="/update/{{$viewdata[0]->id; }}" method = "post">
         <input type = "hidden" name = "_token" value = "<?php echo csrf_token(); ?>">
+        @csrf
+        <div class="form-group">
+          <label for="exampleInputEmail1">Name</label>
+          <input type="text" class="form-control" id="name" name="name"  value='{{ $viewdata[0]->name}}' placeholder="Enter Name">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Email </label>
+          <input type="email"  name="email" readonly class="form-control" id="email" value="{{ $viewdata[0]->email}}" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Class</label>
+          <input type="text" class="form-control" name="class" id="class" value="{{ $viewdata[0]->class }}" placeholder="Enter Class">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Mobile</label>
+          <input type="tel" class="form-control" name="Mobile" id="mobile" value="{{  $viewdata[0]->Mobile }}" placeholder="Enter Mobile No.">
+        </div>
+        <input type="submit" class="btn btn-success" value="submit">
 
-        <table>
-           <tr>
-              <td>Name</td>
-              <td>
-                 <input type = 'text' name = 'name' value = '{{ $viewdata[0]->name}}'/><br>
-              </td>
-              <br><td>
-                 <input type = 'text' name = 'email' value = '{{ $viewdata[0]->email}}'/>
-              </td><br>
-              <br><td>
-                <input type = 'text' name = 'class' value = '{{ $viewdata[0]->class }}'/>
-             </td><br>
-              <br><td>
-                <input type = 'text' name = 'Mobile' value = '{{  $viewdata[0]->Mobile }}'/>
-             </td><br>
-           <tr>
-              <td colspan = '2'>
-                 <input type = 'submit' value = "Update student" />
-              </td>
-           </tr>
-        </table>
-     </form>
+      </form>
+</div>
+</div>
 
 
 

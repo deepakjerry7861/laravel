@@ -37,6 +37,7 @@ Route::get('view/{id}', [ProductController::class, 'show']);
 Route::post('update/{id}', [ProductController::class, 'update']);
 Route::get('edit/{id}', [ProductController::class, 'edit']);
 
+Route::get('chart', [ProductController::class, 'chart']);
 
 
 // Route::controller(ProductController::class)->group(function(){
@@ -48,3 +49,7 @@ Route::get('edit/{id}', [ProductController::class, 'edit']);
 //     Route::delete('products/{product}', 'destroy')->name('products.destroy');
 //     Route::get('products/{product}/edit', 'edit')->name('products.edit');
 // });
+
+
+Route::get('role',['middleware' => 'Role:editor','uses' => 'TestController@index',
+ ]);
