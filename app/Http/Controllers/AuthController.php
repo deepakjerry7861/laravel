@@ -13,6 +13,28 @@ use Illuminate\Support\Facades\Crypt;
 class AuthController extends Controller
 {
     //
+    public function login()
+    {
+        return view('login');
+    }
+    public function customLogin(Request $request)
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+
+        $credentials = $request->only('email', 'password');
+        if (Auth::attempt($credentials)) {
+            return redirect()->intended('dashboard')
+                        ->withSuccess('Signed in');
+        }
+
+        return redirect("login")->with('Login details are not valid');
+
+    }
+
+
     public function register()
     {
         return view('register');
@@ -28,7 +50,7 @@ class AuthController extends Controller
 
         $data = $request->all();
         $check = $this->create($data);
-        return redirect("dashboard")->withSuccess('You have signed-in');
+        return redirect("login")->withSuccess('You have signed-in');
 
     }
     public function create(array $data)
@@ -39,8 +61,15 @@ class AuthController extends Controller
         'password' => Hash::make($data['password'])
       ]);
     }
+
+
+
     public function dashboard()
     {
+
+
+
+
         if(Auth::check()){
             return view('dashboard');
         }

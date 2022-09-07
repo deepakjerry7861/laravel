@@ -1,19 +1,22 @@
 
 @extends('master')
-@section('title', 'Update Student')
+@section('title', ' Student Login')
 @section('content')
-
+<div class="card">
+    @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+    </div>
+@endif
 
 
 
 <div class="container">
-    <h1 class="align center">Register page</h1>
-    <form action ="{{ route('customRegistration') }}" method = "post">
+    <h1 class="align center">Login page</h1>
+    <form action ="{{ route('customLogin') }}" method = "post">
         @csrf
-        <div class="form-group">
-          <label for="exampleInputEmail1">Name</label>
-          <input type="text" class="form-control" id="name" name="name"  placeholder="Enter Name">
-        </div>
+
         <div class="form-group">
           <label for="exampleInputEmail1">Email </label>
           <input type="email"  name="email" class="form-control" id="email"  placeholder="Enter email">

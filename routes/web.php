@@ -41,10 +41,11 @@ Route::get('edit/{id}', [ProductController::class, 'edit']);
 
 
 Route::get('register', [AuthController::class, 'register']);
+Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('customRegistration');
+Route::get('login', [AuthController::class, 'login'])->name('login');
+Route::post('customLogin', [AuthController::class, 'customLogin'])->name('customLogin');
+
 Route::get('dashboard', [AuthController::class, 'dashboard']);
-Route::get('login', [AuthController::class, 'index'])->name('login');
-Route::post('custom-login', [AuthController::class, 'customLogin'])->name('login.custom');
-Route::post('custom-registration', [AuthController::class, 'customRegistration'])->name('register.custom');
 Route::get('signout', [AuthController::class, 'signOut'])->name('signout');
 
 
