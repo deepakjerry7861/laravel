@@ -16,6 +16,7 @@ class CreateStudentsTable extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
+            $table->string('pic');
             $table->string('email');
             $table->string('class');
             $table->string('Mobile');
@@ -23,6 +24,7 @@ class CreateStudentsTable extends Migration
 
         });
     }
+
 
     /**
      * Reverse the migrations.

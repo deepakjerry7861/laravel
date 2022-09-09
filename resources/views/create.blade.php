@@ -6,12 +6,20 @@
 <h1 class="text-center">Hello Create page</h1>
 
 <div class="container">
-<form action ="/savedata" method = "post">
+<form action ="/savedata" method = "post"  enctype="multipart/form-data">
     @csrf
     <div class="form-group">
       <label for="exampleInputEmail1">Name</label>
       <input type="text" class="form-control" id="name" name="name"  placeholder="Enter Name">
     </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Student Pic</label>
+      <input type="file" class="form-control"  name="pic" id="pic"  onchange="loadFile(event)"   placeholder="Upload Pic">
+      <p><img id="output" width="200" /></p>
+    </div>
+
+
+
     <div class="form-group">
       <label for="exampleInputEmail1">Email </label>
       <input type="email"  name="email" class="form-control" id="email"  placeholder="Enter email">

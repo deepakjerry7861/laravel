@@ -17,6 +17,12 @@
           <input type="text" class="form-control" id="name" name="name"  value='{{ $viewdata[0]->name}}' placeholder="Enter Name">
         </div>
         <div class="form-group">
+          <label for="exampleInputEmail1">Name</label>
+          <img src="/pic/{{$viewdata[0]->pic }}" width="300px">
+
+        </div>
+
+        <div class="form-group">
           <label for="exampleInputEmail1">Email </label>
           <input type="email"  name="email" readonly class="form-control" id="email" value="{{ $viewdata[0]->email}}" placeholder="Enter email">
         </div>

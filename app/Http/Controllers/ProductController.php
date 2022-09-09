@@ -45,16 +45,28 @@ class ProductController extends Controller
     public function savedata(Request $request)
     {
         $name = $request->input('name');
+        $pic = $request->input('pic');
         $email = $request->input('email');
         $class = $request->input('class');
         $Mobile = $request->input('Mobile');
 
+        // print_r($pic);die();
+        if ($pic = $request->file('pic')) {
+            $destinationPath = 'pic/';
+            $profilepic = date('YmdHis') . "." . $pic->getClientOriginalExtension();
+            $pic->move($destinationPath, $profilepic);
+            $input['pic'] = "$profilepic";
+        }
+
+
         $data=array(
         'name'=>$name,
+        'pic'=>$profilepic,
         'email'=>$email,
         'class'=>$class,
         'Mobile'=>$Mobile);
         DB::table('students')->insert($data);
+
 
         return redirect('/datalist')->with('status', 'Student Registered !!');
 
